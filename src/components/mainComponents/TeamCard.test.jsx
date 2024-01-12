@@ -2,7 +2,7 @@ import { describe, expect, it, test, vi, vitest } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import TeamCards from './TeamCards'
-import useDeleteCard from '../hooks/useDeleteCard'
+
 
 /**
 * @vitest-environment jsdom
@@ -16,6 +16,7 @@ describe('TeamCards component', () => {
                 front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png'
             }
         }
+        
         render(<TeamCards loading={true} pokemonData={pokemonData}/>)
         const spinner = document.getElementById('spinner')
         expect(spinner).toBeInTheDocument()
@@ -60,26 +61,28 @@ describe('TeamCards component', () => {
                 front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png'
             }
         }
-        render(<TeamCards loading={false} pokemonData={pokemonData}/>)
-        const deleteButton = screen.getByRole('button', {name: /x/i})
+        const index = 1
+        render(<TeamCards loading={false} pokemonData={pokemonData} index={index}/>)
+        const deleteButton = document.getElementById('delete-1')
         expect(deleteButton).toBeInTheDocument()
     })
 
-    it('tries to fetch the data with useAPI', async () => {
-        const mockResponse = {
-            name: 'pikachu',
-            id: '25',
-            sprites: {
-                front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png'
-            }
-        }
-        vi.spyOn(window, "fetch").mockImplementationOnce(() => {
-            return Promise.resolve({
-                json: () => Promise.resolve(mockResponse) })
-        })
-    })
+ 
 })
 
 //tengo que cambiar el pokemonData de pasar en props a ser invocado en una funcion como ayer
 //const pokemonData = useAPI() 
 //useAPI es la funcion que va a tener el mock
+// it.todo('tries to fetch the data with useAPI', async () => {
+//     const mockResponse = {
+//         name: 'pikachu',
+//         id: '25',
+//         sprites: {
+//             front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png'
+//         }
+//     }
+//     vi.spyOn(window, "fetch").mockImplementationOnce(() => {
+//         return Promise.resolve({
+//             json: () => Promise.resolve(mockResponse) })
+//     })
+// })

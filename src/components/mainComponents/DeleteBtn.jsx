@@ -1,11 +1,12 @@
 import { Button } from '@chakra-ui/react'
 import React from 'react'
-import useDeleteCard from '../hooks/useDeleteCard'
+import useTeam from '../hooks/useTeam'
 
-const DeleteBtn = ({pokemonTeam, pokemonName}) => {
-    const {deletePokemon} = useDeleteCard()
+
+const DeleteBtn = ({index}) => {
+  const {deletePokemon} = useTeam()
   return (
-    <Button onClick={() => deletePokemon(pokemonTeam, pokemonName)}>X</Button>
+    <Button id={`delete-${index}`} onClick={() => deletePokemon(index)}>X</Button>
   )
 }
 
