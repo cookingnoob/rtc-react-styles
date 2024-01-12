@@ -64,4 +64,22 @@ describe('TeamCards component', () => {
         const deleteButton = screen.getByRole('button', {name: /x/i})
         expect(deleteButton).toBeInTheDocument()
     })
+
+    it('tries to fetch the data with useAPI', async () => {
+        const mockResponse = {
+            name: 'pikachu',
+            id: '25',
+            sprites: {
+                front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png'
+            }
+        }
+        vi.spyOn(window, "fetch").mockImplementationOnce(() => {
+            return Promise.resolve({
+                json: () => Promise.resolve(mockResponse) })
+        })
+    })
 })
+
+//tengo que cambiar el pokemonData de pasar en props a ser invocado en una funcion como ayer
+//const pokemonData = useAPI() 
+//useAPI es la funcion que va a tener el mock
