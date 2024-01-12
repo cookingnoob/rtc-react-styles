@@ -1,6 +1,6 @@
 import { Heading, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
-import TeamCards from './components/TeamCards/TeamCards'
+import TeamCards from '../TeamCards/TeamCards'
 
 const Main = () => {
   

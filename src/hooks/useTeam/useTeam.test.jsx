@@ -1,7 +1,7 @@
 import { describe, expect, it, test, vitest } from 'vitest'
 import { render, renderHook, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import useTeam from './useTeam/useTeam'
+import useTeam from './useTeam'
 import { act } from '@testing-library/react-hooks'
 
 /**
@@ -22,7 +22,9 @@ describe('use team hook', () => {
         act(() => result.current.addPokemon('meowth'))
         expect(result.current.pokemonTeam).toEqual(expectedTeam)
     })
+    it.todo('saves the team in localStorage', () => {
 
+    })
     it('doesnt let you add a pokemon if the team has 6 members', () => {
         const expectedTeam = ['pikachu', 'gengar', 'charizard', 'psyduck', 'magikarp', 'meowth']
         const {result} = renderHook(useTeam)
@@ -69,7 +71,7 @@ describe('use team hook', () => {
          expect(result.current.pokemonTeam).toEqual(expectedValue)
      })
 
-     it('if the team has more than one of the same pokemon, only one of those gets deleted ', () => {
+     it('if the team has more than one of the same pokemon, only one gets deleted', () => {
         const initialTeam = ['pikachu', 'pikachu', 'pikachu', 'pikachu', 'pikachu','pikachu']
         const expectedValue = ['pikachu', 'pikachu', 'pikachu', 'pikachu', 'pikachu',]
         const {result} = renderHook(() => useTeam(initialTeam))
