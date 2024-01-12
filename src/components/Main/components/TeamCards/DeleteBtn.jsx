@@ -1,6 +1,6 @@
 import { Button } from '@chakra-ui/react'
 import React from 'react'
-import useTeam from '../hooks/useTeam'
+import useTeam from '../../../../hooks/useTeam/useTeam'
 
 
 const DeleteBtn = ({index}) => {

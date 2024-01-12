@@ -1,7 +1,7 @@
 import { describe, expect, it, test, vitest } from 'vitest'
 import { render, renderHook, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import useTeam from './useTeam'
+import useTeam from './useTeam/useTeam'
 import { act } from '@testing-library/react-hooks'
 
 /**

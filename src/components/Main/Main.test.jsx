@@ -1,7 +1,7 @@
 import { describe, expect, it, test, vitest } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import Main from './Main'
+import Main from './Main/Main'
 /**
 * @vitest-environment jsdom
 */
@@ -21,4 +21,5 @@ describe('Main component', () => {
         expect(text).toBeInTheDocument()
     })
 
+    it.todo('renders pokemon cards')
 })

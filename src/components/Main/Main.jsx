@@ -1,8 +1,9 @@
 import { Heading, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
-import TeamCards from './mainComponents/TeamCards'
+import TeamCards from './components/TeamCards/TeamCards'
 
 const Main = () => {
+  
   return (
     <>
     <Heading as={"h1"}>Crea tu equipo pokemon</Heading>
