@@ -1,7 +1,7 @@
 import { describe, expect, it, test, vitest } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import Main from './Main/Main'
+import Main from './Main'
 /**
 * @vitest-environment jsdom
 */
