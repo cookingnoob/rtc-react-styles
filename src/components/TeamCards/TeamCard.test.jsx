@@ -25,6 +25,7 @@ describe('TeamCards component', () => {
         })
         const pokemonName = 'pikachu'
         render(<TeamCards pokemonName={pokemonName} index={0}/>)
+        console.log(useAPI)
         expect(useAPI).toHaveBeenCalledWith(pokemonName)
     })
 
@@ -102,6 +103,7 @@ describe('TeamCards component', () => {
         const deleteButton = document.getElementById('delete-1')
         expect(deleteButton).toBeInTheDocument()
     })
+    
     it('renders problem message if there is no loading or data', () => {
         useAPI.mockReturnValue({
             loading:null,
@@ -113,20 +115,3 @@ describe('TeamCards component', () => {
     })
  
 })
-
-//tengo que cambiar el pokemonData de pasar en props a ser invocado en una funcion como ayer
-//const pokemonData = useAPI() 
-//useAPI es la funcion que va a tener el mock
-// it.todo('tries to fetch the data with useAPI', async () => {
-//     const mockResponse = {
-//         name: 'pikachu',
-//         id: '25',
-//         sprites: {
-//             front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png'
-//         }
-//     }
-//     vi.spyOn(window, "fetch").mockImplementationOnce(() => {
-//         return Promise.resolve({
-//             json: () => Promise.resolve(mockResponse) })
-//     })
-// })
