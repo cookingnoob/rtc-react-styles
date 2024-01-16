@@ -7,7 +7,9 @@ import useAPI from '../../hooks/useAPI/useAPI'
 /**
 * @vitest-environment jsdom
 */
-
+vi.mock('../../hooks/useAPI/useAPI.jsx', async () => ({
+    default: vi.fn()
+}))
 
 describe('Header component', () => {
     it('renders search bar', () => {
@@ -28,13 +30,24 @@ describe('Header component', () => {
         await  userEvent.type(searchBar, 'psyduck')
         expect(searchBar.value).toBe('psyduck')
     })
-    it.todo('search button sends pokemon name to the useAPI hook', async () => {
-        render(<Header/>)
 
+    it('search button sends pokemon name to the useAPI hook', async () => {
+        useAPI.mockReturnValue({
+            loading:false,
+            pokemonData: {
+                name: 'pikachu',
+                sprites: {
+                    front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png'
+                }
+            }
+        })
+        render(<Header/>)
         const searchBar = screen.getByPlaceholderText(/busca un pokemon por su nombre/i)
         const searchButton = screen.getByRole('button', {name: /buscar/i})
-        await  userEvent.type(searchBar, 'psyduck')
-        await userEvent.click(searchButton)
-        expect(useAPI).toHaveBeenCalledWith('psyduck')
+        expect(searchBar).toBeInTheDocument()
+        expect(searchButton).toBeInTheDocument()
+        await userEvent.type(searchBar, 'pikachu')
+        await userEvent.click()
+        expect(useAPI).toHaveBeenCalledWith('pikachu')    
     })
 })

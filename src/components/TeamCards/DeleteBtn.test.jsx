@@ -16,11 +16,8 @@ vi.mock('../../hooks/useTeam/useTeam.jsx', async () => ({
 }))
 describe('delete button component', () => {
     it('calls deletepokemon when clicked', async () => {
-      
         const index = 0
-        console.log(useTeam())
         render(<DeleteBtn index={index} />)
-
         const deleteBtn = document.getElementById(`delete-${index}`)
         expect(deleteBtn).toBeInTheDocument()
         await userEvent.click(deleteBtn)
