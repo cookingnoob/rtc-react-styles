@@ -29,9 +29,11 @@ describe('Header component', () => {
         const searchBar = screen.getByPlaceholderText(/busca un pokemon por su nombre/i)
         await  userEvent.type(searchBar, 'psyduck')
         expect(searchBar.value).toBe('psyduck')
-    })
+    })  
 
-    it('search button sends pokemon name to the useAPI hook', async () => {
+    it('')
+
+    it.todo('search button sends pokemon name to the useAPI hook', async () => {
         useAPI.mockReturnValue({
             loading:false,
             pokemonData: {

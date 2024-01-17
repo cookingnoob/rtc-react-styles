@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const useInput = (stringToModify) => {
-  const newString = typeof stringToModify !== 'string' ? 
-                    stringToModify.toString(): stringToModify.toLowerCase()
-  return newString
+const useInput = () => {
+    const [modifiedString, setModifiedString] = useState(null)
+
+    const handleInput = (stringToModify) => {
+        const newString = typeof stringToModify !== 'string' ? 
+        stringToModify.toString(): stringToModify.toLowerCase()
+         setModifiedString(newString)
+    }
+    return {handleInput, modifiedString}
 }
 
 export default useInput

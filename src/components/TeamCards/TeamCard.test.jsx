@@ -25,7 +25,7 @@ describe('TeamCards component', () => {
         })
         const pokemonName = 'pikachu'
         render(<TeamCards pokemonName={pokemonName} index={0}/>)
-        console.log(useAPI)
+    
         expect(useAPI).toHaveBeenCalledWith(pokemonName)
     })
 

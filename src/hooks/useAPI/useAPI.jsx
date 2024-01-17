@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
-const useAPI = (pokemonName) => {
+const useAPI = () => {
   const[loading, setLoading] = useState(false)
   const[pokemonData, setPokemonData] = useState(null)
   
-  useEffect(() => {
-    const getPokemon = async () => {
+    const getPokemon = async (pokemonName) => {
       try{
         setLoading(true)
         const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
@@ -17,10 +16,9 @@ const useAPI = (pokemonName) => {
         setLoading(false)
       }
     }
-    getPokemon()
-  }, [])
 
-  return {loading, pokemonData}
+
+  return {loading, pokemonData, getPokemon}
 }
 
 export default useAPI

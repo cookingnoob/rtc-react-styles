@@ -1,19 +1,20 @@
 import { Box, Button, Input } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import useAPI from '../../hooks/useAPI/useAPI'
+import useInput from '../../hooks/useInput/useInput'
 
 const Header = () => {
   const [pokemonToSearch, setPokemonToSearch] = useState(null)
+  const {handleInput, modifiedString} = useInput()
 
-
-  const handleInput = (pokemonToSearch) => {
-    console.log(pokemonToSearch)
+  const getInputValue = (e) => {
+    handleInput(e.target.value)
   }
 
   return (
     <Box>
-        <Input placeholder='Busca un pokemon por su nombre' onChange={setPokemonToSearch(e.target.value)}></Input>
-        <Button onClick={handleInput}>Buscar</Button>
+        <Input placeholder='Busca un pokemon por su nombre' value={pokemonToSearch} onChange={getInputValue}></Input>
+        <Button >Buscar</Button>
     </Box>
   )
 }

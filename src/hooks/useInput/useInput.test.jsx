@@ -12,13 +12,16 @@ describe('useInput', () => {
     it('standarizes the string it recieves to lowercase', () => {
         const stringToModify = 'hOlAHolA'
         const expectedResult = 'holahola'
-        const {result} = renderHook(() => useInput(stringToModify))
-        expect(result.current).toBe(expectedResult)
+        const {result} = renderHook(() => useInput())
+        act(() => result.current.handleInput(stringToModify))
+        expect(result.current.modifiedString).toBe(expectedResult)
     })
     it('changes the type of data to text', () => {
         const dataToChange = 3020
         const expectedResult = '3020'
-        const {result} = renderHook(() => useInput(dataToChange))
-        expect(result.current).toBe(expectedResult)
+        const {result} = renderHook(() => useInput())
+        act(() => result.current.handleInput(dataToChange))
+        expect(result.current.modifiedString).toBe(expectedResult)
+
     })
 })
